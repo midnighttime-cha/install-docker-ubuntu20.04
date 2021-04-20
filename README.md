@@ -1,31 +1,31 @@
-# How to install docker on Ubuntu 20.04
+# วิธีติดตั้ง docker บน Ubuntu 20.04
 
-## Install Docker 
-first update ubuntu
+## เริ่มต้นการติดตั้ง
+ขั้นตอนแรกต้องทำการอัพเดท ubuntu
 ```bash
 sudo apt update
 ```
-next install package support for Docker 
+จากนั้นทำการติดตั้ง package เพื่อใช้ในการ support การทำงานของ Docker 
 ```bash
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 ```
-add GPG key for the official Docker repository
+เพิ่ม GPG Key ของ official Docker repository
 ```bash
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
-Add the Docker repository to APT sources
+สร้าง Docker Repository ใน APT sources
 ```bash
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 ```
-update ubuntu again
+อัพเดท ubuntu อีกรอบ
 ```bash
 sudo apt update
 ```
-Make sure you are about to install from the Docker repo instead of the default Ubuntu repo
+ตรวจสอบดูให้แน่ใจเกี่ยวกับ Docker repo
 ```bash
 apt-cache policy docker-ce
 ```
-Output
+ผลลัพท์
 ```
 docker-ce:
   Installed: (none)
@@ -34,15 +34,15 @@ docker-ce:
      5:19.03.9~3-0~ubuntu-focal 500
         500 https://download.docker.com/linux/ubuntu focal/stable amd64 Packages
 ```
-Install Docker
+จากนั้นทำการติดตั้ง Docker ได้เลยดังนี้
 ```bash
 sudo apt install docker-ce
 ```
-check status Docker
+เมื่อทำการติดตั้งเรียบร้อยสามารถตรวจสอบการทำงานของ Docker ได้โดย
 ```bash
 sudo systemctl status docker
 ```
-Output
+ผลลัพท์
 ```
 Output
 ● docker.service - Docker Application Container Engine
@@ -58,28 +58,22 @@ TriggeredBy: ● docker.socket
 ```
 
 
-## Executing the Docker Command Without Sudo
-add your username to the docker group
+## วิธีแก้ไขให้ Docker ไม่ต้องใช้ `sudo` นำหน้าทุกครั้ง
+เริ่มต้นให้ทำการเพิ่ม username ที่ใช้งานเข้าในกลุ่ม docker group
 ```bash
 sudo usermod -aG docker ${USER}
 ```
-or specify USERNAME
+หรือจะระบุเป็นชื่อ username นั้นตรงๆไปดังนี้
 ```bash
-sudo usermod -aG docker username
+sudo usermod -aG docker [username]
 ```
-To apply the new group membership
+ทำการเช็ค user
 ```bash
 su - ${USER}
 ```
-You will be prompted to enter your user’s password to continue.
+จากนั้นใส่ Password
 
-## Check docker working with Docker Images
+เมื่อเสร็จทุกขั้นตอนสามารถทดลองไม่ใช้ `sudo` ตามตัวอย่างต่อไปนี้
 ```bash
 docker run hello-world
 ```
-
-
-
-
-
-
