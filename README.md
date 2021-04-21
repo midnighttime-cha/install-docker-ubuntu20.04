@@ -59,7 +59,7 @@ TriggeredBy: ● docker.socket
 
 
 ## วิธีแก้ไขให้ Docker ไม่ต้องใช้ `sudo` นำหน้าทุกครั้ง
-เริ่มต้นให้ทำการเพิ่ม username ที่ใช้งานเข้าในกลุ่ม docker group
+เริ่มต้นให้ทำการเพิ่ม username ที่ใช้งานเข้าในกลุ่ม docker group กรณีนี้ถ้าเราทำงานอยู่บน user ใดระบบจะทำการเพิ่ม user ปัจจุบ้นของเราเข้า docker group ด้วยคำสั่งต่อไปนี้
 ```bash
 sudo usermod -aG docker ${USER}
 ```
