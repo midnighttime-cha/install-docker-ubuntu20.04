@@ -37,16 +37,16 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 กรณีต้องการติดตั้งแบบระบุ vsersion
 ```bash
+# เช็คเวิอร์ชั่นทั้งหมด
 apt-cache madison docker-ce
+
+# ติดตั้งตาม version
+sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
 ```
 
 ตรวจสอบดูให้แน่ใจเกี่ยวกับ Docker repo
 ```bash
-# เช็คเวิอร์ชั่นทั้งหมด
 apt-cache policy docker-ce
-
-# ติดตั้งตาม version
-sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
 ```
 ผลลัพท์
 ```
