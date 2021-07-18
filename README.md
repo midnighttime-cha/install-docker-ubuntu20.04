@@ -1,29 +1,52 @@
 # วิธีติดตั้ง docker บน Ubuntu 20.04
 
 ## เริ่มต้นการติดตั้ง
+ถอนการติดตั้ง Docker ของเก่าที่อาจมีอยู่แล้ว
+```bash
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
 ขั้นตอนแรกต้องทำการอัพเดท ubuntu
 ```bash
-sudo apt update
+sudo apt-get update
 ```
-จากนั้นทำการติดตั้ง package เพื่อใช้ในการ support การทำงานของ Docker 
+จากนั้นทำการติดตั้ง Repository เพื่อใช้ในการติดตั้ง Docker 
 ```bash
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
 ```
 เพิ่ม GPG Key ของ official Docker repository
 ```bash
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
 สร้าง Docker Repository ใน APT sources
 ```bash
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
-อัพเดท ubuntu อีกรอบ
+
+ติดตั้ง Docker
 ```bash
 sudo apt update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
+
+กรณีต้องการติดตั้งแบบระบุ vsersion
+```bash
+apt-cache madison docker-ce
+```
+
 ตรวจสอบดูให้แน่ใจเกี่ยวกับ Docker repo
 ```bash
+# เช็คเวิอร์ชั่นทั้งหมด
 apt-cache policy docker-ce
+
+# ติดตั้งตาม version
+sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
 ```
 ผลลัพท์
 ```
