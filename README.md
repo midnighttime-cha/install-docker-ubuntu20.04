@@ -64,10 +64,7 @@ docker-ce:
      5:19.03.9~3-0~ubuntu-focal 500
         500 https://download.docker.com/linux/ubuntu focal/stable amd64 Packages
 ```
-จากนั้นทำการติดตั้ง Docker ได้เลยดังนี้
-```bash
-sudo apt install docker-ce
-```
+
 เมื่อทำการติดตั้งเรียบร้อยสามารถตรวจสอบการทำงานของ Docker ได้โดย
 ```bash
 sudo systemctl status docker
