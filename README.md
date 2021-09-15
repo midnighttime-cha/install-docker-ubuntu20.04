@@ -3,15 +3,15 @@
 ## เริ่มต้นการติดตั้ง
 ถอนการติดตั้ง Docker ของเก่าที่อาจมีอยู่แล้ว
 ```bash
-sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt remove docker docker-engine docker.io containerd runc
 ```
 ขั้นตอนแรกต้องทำการอัพเดท ubuntu
 ```bash
-sudo apt-get update
+sudo apt update
 ```
 จากนั้นทำการติดตั้ง Repository เพื่อใช้ในการติดตั้ง Docker 
 ```bash
-sudo apt-get install \
+sudo apt install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -32,7 +32,7 @@ echo \
 ติดตั้ง Docker
 ```bash
 sudo apt update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt install docker-ce docker-ce-cli containerd.io
 ```
 
 กรณีต้องการติดตั้งแบบระบุ vsersion
@@ -48,7 +48,7 @@ docker-ce | 5:20.10.7~3-0~ubuntu-focal | https://download.docker.com/linux/ubunt
  docker-ce | 5:20.10.3~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages
 
 # ติดตั้งตาม version
-sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
+sudo apt install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
 ```
 
 ตรวจสอบดูให้แน่ใจเกี่ยวกับ Docker repo
